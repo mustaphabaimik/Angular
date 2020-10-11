@@ -1,0 +1,40 @@
+<!-- Header -->
+
+<header class="container" style="margin-top:90px;padding: 0;padding-top: 0;">
+    <!-- Header desktop -->
+    <div class="container-menu-desktop" style="padding-top: 0;">
+    
+        <div class="wrap-main-nav" style="padding-top: 0;">
+                <!-- Menu desktop -->
+                    <div class="wrap-menu-desktop" style="position:absolute;top:0;margin-top: -60px;">
+                        <nav class="limiter-menu-desktop container">
+                            <!-- Menu desktop -->
+                            <div class="menu-desktop" style="width: 100%;position:absolute;left: 0;">
+                                    <ul class="main-menu" style="width: 225px;height:50px;position:absolute;left: 0;">
+                                        <li class="active-menu" style="position:absolute;left: 0;">
+                                            <span style="cursor: pointer;font-size: 15px;font-weight: bold;margin-bottom: 20px;padding-right:85px;padding-top: 5px;padding-bottom: 5px;padding-left: 40px;background-color: #dfe6e9;border-radius: 5px;"> Catégories </span>
+                                            <ul class="sub-menu" style="width: 600px;">
+                                                <li *ngFor='let cat of categories'>
+                                                    <a routerLink="/detailcategorie/{{cat.catid}}" *ngIf="cat.parentcategorie==null">{{cat.catnom}}</a>
+                                               
+                                                               <div class="sub-menu" style="width: 400px;">
+                                                                    <span>
+                                                                    <li *ngFor='let c of categories'><a *ngIf="c.parentcategorie!=null && c.parentcategorie.catid==cat.catid" routerLink="/detailcategorie/{{c.catid}}">{{c.catnom}}</a></li>
+                                                                
+                                                                    </span>         
+                                                                </div>               
+                                                </li>    
+                                            </ul>
+                                        </li>  
+                                    </ul>
+                                    
+                              
+                                <h4 style="margin-right: 20px;margin-top: 17px;margin-left: 300px;">super promos</h4>
+                                 <h6 style="margin-top: 17px;">profitez de nos offres exceptionnelles  et économisez jusqu'à 70%</h6>
+                            </div>	 
+                        </nav>
+                    </div>   
+        </div>	
+    </div>
+</header>
+

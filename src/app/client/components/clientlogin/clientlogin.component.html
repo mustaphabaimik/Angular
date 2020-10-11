@@ -1,0 +1,49 @@
+<div class="container-fluid" style="margin-top: 20px;background-color: #f5f6fa;">
+
+
+    <div class="row" >
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="text-center m-b-md custom-login">
+                <h3>connectez-vous</h3>
+                <p style="font-weight: bold;">OU</p>
+                <p>Créez un nouveau compte</p>
+            </div>
+            <div class="hpanel">
+                <div class="panel-body">
+                    <form id="loginForm" action="" method="POST" (ngSubmit)="login()" #f="ngForm">
+                        <div class="form-group">
+                            <label class="control-label" for="nom d'utilisateur">nom d'utilisateur</label>
+                            <input type="text" placeholder="exemple" title="Entrez votre nom d'utilisateur"  class="form-control" name="username" [(ngModel)]="client.username" #username="ngModel" required>
+                            <span class="help-block small">Votre nom d'utilisateur</span>
+                            <div style="color: red;" *ngIf="username.touched && !username.valid" class="alert alert-danger">
+                                <div *ngIf="username.errors.required">ce champ est obligatoire !!</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password">mot de passe</label>
+                            <input type="password" title="Please entez votre mot de passe" placeholder="******" class="form-control" name="password" [(ngModel)]="client.password" #password="ngModel" required>
+                            <span class="help-block small">votre mot de passe</span>
+                            <div style="color: red;" *ngIf="password.touched && !password.valid" class="alert alert-danger">
+                                <div *ngIf="password.errors.required">ce champ est obligatoire !!</div>
+                            </div>
+                        </div>
+                      
+                        <button type="submit" class="btn btn-success btn-block loginbtn" [disabled]="!f.valid">Se connecter</button>
+                        
+                        
+                    </form>
+                    <button class="btn btn-default btn-block" routerLink="/clientregister">créer un compte</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+       
+    </div>
+   
+</div>
+
+
+
+<app-footer></app-footer>
+

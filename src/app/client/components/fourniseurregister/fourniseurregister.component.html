@@ -1,0 +1,149 @@
+
+<div class="container-fluid" style="margin-top: 10px;background-color: #f5f6fa">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+        <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="text-center custom-login">
+                <h3>Nouveau compte</h3>
+                
+            </div>
+            <div class="hpanel" style="background-color: white;padding: 10px;">
+                <div class="panel-body">
+                    <form action="#" id="loginForm" (ngSubmit)="addFournisseurBoutique()" #f="ngForm">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Nom</label>
+                                <input class="form-control" name="frnom" [(ngModel)]="fournisseur.nom" #frnom="ngModel" required>
+                                <div style="color: red;" *ngIf="frnom.touched && !frnom.valid" class="alert alert-danger">
+                                    <div *ngIf="frnom.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Prenom</label>
+                                <input class="form-control" name="frprenom" [(ngModel)]="fournisseur.prenom" #frprenom="ngModel" required>
+                                <div style="color: red;" *ngIf="frprenom.touched && !frprenom.valid" class="alert alert-danger">
+                                    <div *ngIf="frprenom.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Pays</label>
+                                <select class="form-control" name="frpays" [(ngModel)]="fournisseur.pays" #frpays="ngModel" required>
+                                    <option value="{{p.name}}" *ngFor='let p of pays'>{{ p.name }}</option>             
+                                </select>
+                                <div style="color: red;" *ngIf="frpays.touched && !frpays.valid" class="alert alert-danger">
+                                    <div *ngIf="frpays.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Adresse</label>
+                                <input class="form-control" name="fradresse" [(ngModel)]="fournisseur.adresse" #fradresse="ngModel" required>
+                                <div style="color: red;" *ngIf="fradresse.touched && !fradresse.valid" class="alert alert-danger">
+                                    <div *ngIf="fradresse.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>codepostal</label>
+                                <input class="form-control" name="frcodepostal" [(ngModel)]="fournisseur.codepostal" #frcodepostal="ngModel" required>
+                                <div style="color: red;" *ngIf="frcodepostal.touched && !frcodepostal.valid" class="alert alert-danger">
+                                    <div *ngIf="frcodepostal.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Telephone</label>
+                                <input class="form-control" name="frtel" [(ngModel)]="fournisseur.telephone" #frtel="ngModel" required>
+                                <div style="color: red;" *ngIf="frtel.touched && !frtel.valid" class="alert alert-danger">
+                                    <div *ngIf="frtel.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Email</label>
+                                <input class="form-control" name="fremail" [(ngModel)]="fournisseur.email" #fremail="ngModel" required>
+                                <div style="color: red;" *ngIf="fremail.touched && !fremail.valid" class="alert alert-danger">
+                                    <div *ngIf="fremail.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>nom d'utilisateur</label>
+                                <input class="form-control" name="frlogin" [(ngModel)]="fournisseur.username" #frlogin="ngModel" required>
+                                <div style="color: red;" *ngIf="frlogin.touched && !frlogin.valid" class="alert alert-danger">
+                                    <div *ngIf="frlogin.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Mot de passe</label>
+                                <input type="password" class="form-control" name="frpassword" [(ngModel)]="fournisseur.password" #frpassword="ngModel" required>
+                                <div style="color: red;" *ngIf="frpassword.touched && !frpassword.valid" class="alert alert-danger">
+                                    <div *ngIf="frpassword.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group col-lg-12">
+                                <label>nom de votre boutique</label>
+                                <input class="form-control" name="bqnom" [(ngModel)]="boutique.boutique_nom" #bqnom="ngModel" required>
+                                <div style="color: red;" *ngIf="bqnom.touched && !bqnom.valid" class="alert alert-danger">
+                                    <div *ngIf="bqnom.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>description de la boutique</label>
+                                <textarea rows="4" cols="50" class="form-control" name="bqdescription" [(ngModel)]="boutique.boutique_description" #bqdescription="ngModel" required>
+                                </textarea>
+                                <div style="color: red;" *ngIf="bqdescription.touched && !bqdescription.valid" class="alert alert-danger">
+                                    <div *ngIf="bqdescription.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label>Image de la boutique</label><br>           
+                                <input type="file" name="bqimage" [(ngModel)]="boutique.image" #bqimage="ngModel" (change)="onFileChanged($event)" required>                          
+                                <div style="color: red;" *ngIf="bqimage.touched && !bqimage.valid" class="alert alert-danger">
+                                    <div *ngIf="bqimage.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group col-lg-12">
+                                <p>
+                                    <a class="btn btn-default" style="background-color: #ecf0f1;" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Categories des produits que vous voulez vendre </a>
+                                    
+                                </p>
+                                <span *ngFor='let item of selecteditemsname' style="background-color:#ecf0f1;margin-right: 5px;border-radius: 5px;color:white;padding: 5px;color:black;">
+                                    <span>{{item}}</span>
+                               </span>    
+                                  <div class="row">
+                                    <div class="col">
+                                      <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                        <div class="card card-body">
+                                            <div *ngFor="let cat of categories">
+                                                <input type="checkbox" name="{{cat.catid}}" value="{{cat.catnom}}" (change)="getid($event,cat.catid,cat.catnom)" style="background-color: red;width: 20px;display: inline-block;" *ngIf='cat.parentcategorie==null'>
+                                                <label *ngIf='cat.parentcategorie==null'>{{cat.catnom}}</label>
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                   
+                                  </div>
+                                  <span *ngIf="caterror" style="color:red;">veuillez selectinner une categorie svp!!</span>  
+                                                 
+                            </div>
+                            
+                            
+                           
+                        </div>
+                        <div class="text-center">
+                            <!--<button class="btn btn-success loginbtn" [disabled]="error">Enregistrer</button>-->
+                            
+                            <button class="btn btn-success loginbtn" [disabled]="!f.valid">Enregistrer</button>
+                            <button class="btn btn-default" routerLink="/login">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+    
+</div>
+
+
+
+<app-footer></app-footer>

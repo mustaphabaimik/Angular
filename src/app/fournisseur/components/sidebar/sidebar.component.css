@@ -1,0 +1,20 @@
+.profile-card{
+    padding: 0 20px 20px 20px;
+    text-align: center;
+}
+
+.profile-card img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+mat-nav-list{
+    /*background-color:gray;*/
+    margin-left: 10px;
+    margin-top: 20px; 
+}
+ul li a{
+    font-size: 14px;
+}

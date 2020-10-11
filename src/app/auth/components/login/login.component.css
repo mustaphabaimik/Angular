@@ -1,0 +1,26 @@
+@import "../../../../assets/fonts3/font-awesome-4.7.0/css/font-awesome.min.css";
+@import "../../../../assets/fonts3/Linearicons-Free-v1.0.0/icon-font.min.css";
+
+
+@import "../../../../assets/vendor3/animate/animate.css";
+@import "../../../../assets/vendor3/css-hamburgers/hamburgers.min.css";
+@import "../../../../assets/vendor3/animsition/css/animsition.min.css";
+@import "../../../../assets/vendor3/select2/select2.min.css";
+@import "../../../../assets/vendor3/daterangepicker/daterangepicker.css";
+
+
+@import "../../../../assets/css3/util.css";
+@import "../../../../assets/css3/main.css";
+
+
+.login100-more{
+    background-image: url('../../../../assets/img2/product-05.jpg');
+}
+
+.hide{
+    display:none;
+}
+.is-invalid{
+    border:2px sokid red;
+}
+

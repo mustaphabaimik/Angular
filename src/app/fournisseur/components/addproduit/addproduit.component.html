@@ -1,0 +1,82 @@
+<div style="text-align: center;color:gray;">
+    <h2>Nouveau Produit</h2>
+</div>
+<hr>
+<form action="" method="POST" (ngSubmit)="ajouterproduit()" #f="ngForm">
+<div class="row">   
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="reference">Reference:</label>
+        <input type="text" class="form-control" id="reference" name="reference" [(ngModel)]="produit.reference" #reference="ngModel" required>
+        <div style="color: red;" *ngIf="reference.touched && !reference.valid" class="alert alert-danger">
+          <div *ngIf="reference.errors.required">ce champ est obligatoire !!</div>
+        </div>
+      </div>
+         
+          <div class="form-group">
+            <label for="comment">Description:</label>
+            <textarea class="form-control" rows="5" id="description" name="description" [(ngModel)]="produit.description" #description="ngModel" required  minlength="5"></textarea>
+            <div style="color: red;" *ngIf="description.touched && !description.valid" class="alert alert-danger">
+              <div *ngIf="description.errors.required">ce champ est obligatoire !!</div>
+              <div *ngIf="description.errors.minlength">ce champ doit avoir au moins {{ description.errors.minlength.actualLength }}/ {{ description.errors.minlength.requiredLength }}  caracteres !!</div>
+              
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="comment">Categorie :</label>
+            <select class="form-control" name="categorie" [(ngModel)]="selectedcat" #categorie="ngModel" required>        
+              <option value="{{item.catid}}" *ngFor='let item of fournisseurs[0].boutique.categories'>{{ item.catnom }}</option>             
+            </select>
+            <div style="color: red;" *ngIf="categorie.touched && !categorie.valid" class="alert alert-danger">
+              <div *ngIf="categorie.errors.required">ce champ est obligatoire !!</div>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="titre">Titre:</label>
+        <input type="text" class="form-control" id="titre" name="libelle" [(ngModel)]="produit.libelle" #libelle="ngModel" required>
+        <div style="color: red;" *ngIf="libelle.touched && !libelle.valid" class="alert alert-danger">
+          <div *ngIf="libelle.errors.required">ce champ est obligatoire !!</div>
+        </div>
+      </div>
+         <div class="form-group">
+            <label for="prix">Prix:</label>
+            <input type="text" class="form-control" id="prix" name="prix" [(ngModel)]="produit.prix" #prix="ngModel" required pattern="[0-9]+">
+            <div style="color: red;" *ngIf="prix.touched && !prix.valid" class="alert alert-danger">
+              <div *ngIf="prix.errors.required">ce champ est obligatoire !!</div>
+              <div *ngIf="prix.errors.pattern">le prix doit etre numerique !!</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="quantite">quantite:</label>
+            <input type="text" class="form-control" id="quantity" name="quantite" name="quantite" [(ngModel)]="produit.quantite" #quantite="ngModel" required pattern="[0-9]+">
+            <div style="color: red;" *ngIf="quantite.touched && !quantite.valid" class="alert alert-danger">
+              <div *ngIf="quantite.errors.required">ce champ est obligatoire !!</div>
+              <div *ngIf="quantite.errors.pattern">quantite doit etre numerique !!</div>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="image">image:</label>
+            <input type="file" name="pr_image_nom" id="image" [(ngModel)]="produit.pr_image_nom" #pr_image_nom="ngModel" (change)="onFileChanged($event)" required>                          
+            <div style="color: red;" *ngIf="pr_image_nom.touched && !pr_image_nom.valid" class="alert alert-danger">
+              <div *ngIf="pr_image_nom.errors.required">ce champ est obligatoire !!</div>
+            </div>
+         </div>
+
+
+
+    </div>
+   
+      
+    
+</div>
+<div class="row">
+   <div class="col-md-12">
+     <input type="submit" value="ajouter" class="btn btn-primary" style="width:100%;" [disabled]="!f.valid">
+   </div>
+</div>
+</form>

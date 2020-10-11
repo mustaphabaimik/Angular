@@ -1,0 +1,28 @@
+<mat-form-field>
+    <input matInput (keyup)="chercher(requete.value)" type="text" placeholder="recherche" #requete>
+  </mat-form-field>
+
+<table class="table table-dark" style="width: 95%;" *ngIf="!tag">  
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>date commande</th>
+      <th>status</th>
+      <th>details</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of commandes">
+        <td>{{ item.idcmd }}</td>
+        <td>{{ item.datecmd }}</td>
+        <td>{{ item.status }}</td>    
+        <td><button class="btn btn-primary" (click)="editercmd(item)">details</button></td>
+    </tr>
+  </tbody>
+  
+</table>
+
+
+
+

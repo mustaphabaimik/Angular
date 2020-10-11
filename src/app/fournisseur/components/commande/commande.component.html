@@ -1,0 +1,102 @@
+<mat-form-field>
+    <input matInput (keyup)="chercher(requete.value)" type="text" placeholder="recherche" #requete>
+  </mat-form-field>
+<div *ngIf="!tag">
+ 
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">numero commande</th>
+        <th scope="col">date commande</th>
+        <th scope="col">statut commande</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of selectedcommandes">
+        <td>{{l.idcmd}}</td>
+        <td>{{l.datecmd}}</td>
+        <td>{{l.status}}</td>
+        <td><button (click)="editercmd(l)" class="btn btn-primary">detail</button></td>
+      </tr>
+     
+    </tbody>
+  </table>
+  
+</div>
+
+
+
+<div *ngIf="tag">
+    <div class="row">
+
+        <div class="col-md-6 detailfournisseur">
+         <h3 style="color:gray">Client</h3>
+         <div class="row">
+                 
+            <div class="col-md-6 info">Nom:</div>
+            <div class="col-md-6 info">{{Client.nom}}</div>
+            <div class="col-md-6 info">prenom:</div>
+            <div class="col-md-6 info">{{Client.prenom}}</div>
+            <div class="col-md-6 info">pays:</div>
+            <div class="col-md-6 info">{{Client.pays}}</div>
+            <div class="col-md-6 info">adresse:</div>
+            <div class="col-md-6 info">{{Client.adresse}}</div>
+            <div class="col-md-6 info">code postal:</div>
+            <div class="col-md-6 info">{{Client.codepostal}}</div>
+            <div class="col-md-6 info">telephone:</div>
+            <div class="col-md-6 info">{{Client.telephone}}</div>
+            <div class="col-md-6 info">email:</div>
+            <div class="col-md-6 info">{{Client.email}}</div>
+            <div class="col-md-6 info">nom utilisateur:</div>
+            <div class="col-md-6 info">{{Client.username}}</div>        
+        </div>
+            
+        </div>
+        <div class="col-md-6">
+            <h3 style="color:gray">Produits</h3>
+            <div class="row" *ngFor="let p of produitparcmd">
+                 
+                <div class="col-md-6 info">reference:</div>
+                <div class="col-md-6 info">{{p.reference}}</div>
+                <div class="col-md-6 info">libelle:</div>
+                <div class="col-md-6 info">{{p.libelle}}</div>
+                <div class="col-md-6 info">prix:</div>
+                <div class="col-md-6 info">{{p.prix}}</div> 
+                <div class="col-md-6 info">quantite:</div>
+                <div class="col-md-6 info">{{getqte(p.reference)}}</div>          
+                <div class="col-md-6 info">image:</div>
+                <div class="col-md-6 info"><img src="http://localhost:4200/assets/img2/{{p.pr_image_nom}}" alt="image" style="width:50px;height: 50px;"></div>       
+            </div>
+
+            <div class="col-md-6 info">total :</div>
+            <div class="col-md-6 info">{{gettotal()}}</div> 
+
+        </div>
+        <button class="btn btn-primary" (click)="retour()">retour</button>
+
+    </div>
+</div>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

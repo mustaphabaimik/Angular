@@ -1,0 +1,73 @@
+<div class="container-fluid" style="margin-top: 20px;background-color: #f5f6fa;" *ngIf="statut">
+    <div class="row" >
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="text-center m-b-md custom-login">
+                <h3>connectez-vous</h3>
+                <p style="font-weight: bold;">OU</p>
+                <p>Créez un nouveau compte</p>
+            </div>
+            <div class="hpanel">
+                <div class="panel-body">
+                    <form id="loginForm" action="" method="POST" (ngSubmit)="login()" #f="ngForm">
+                        <div class="form-group">
+                            <label class="control-label" for="nom d'utilisateur">nom d'utilisateur</label>
+                            <input type="text" placeholder="exemple" title="Entrez votre nom d'utilisateur"  class="form-control" name="username" [(ngModel)]="fournisseur.username" #username="ngModel" required>
+                            <span class="help-block small">Votre nom d'utilisateur</span>
+                            <div style="color: red;" *ngIf="username.touched && !username.valid" class="alert alert-danger">
+                                <div *ngIf="username.errors.required">ce champ est obligatoire !!</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password">mot de passe</label>
+                            <input type="password" title="Please entez votre mot de passe" placeholder="******" class="form-control" name="password" [(ngModel)]="fournisseur.password" #password="ngModel" required>
+                            <span class="help-block small">votre mot de passe</span>
+                            <div style="color: red;" *ngIf="password.touched && !password.valid" class="alert alert-danger">
+                                <div *ngIf="password.errors.required">ce champ est obligatoire !!</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block loginbtn" [disabled]="!f.valid">Se connecter</button> 
+                    </form>
+                    <button class="btn btn-default btn-block" (click)="register()">creer un compte</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>  
+    </div> 
+</div>
+<div class="container-fluid" style="margin-top: 10px;background-color: #f5f6fa;margin-bottom: 50px;" *ngIf="!statut">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+        <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="text-center custom-login">
+                <h3>conditions d'utilisation</h3>
+            </div>
+            <div class="hpanel" style="background-color: white;">
+                <div class="panel-body">
+                     <h1>1.Conditions du compte</h1>
+                    Pour accéder aux Services et les utiliser, vous devez créer un compte cozaStore (« Compte ») en fournissant votre nom légal complet, votre adresse actuelle, votre numéro de téléphone, une adresse e-mail valide et toute autre information indiquée requise. cozaStore peut rejeter votre demande de compte ou annuler un compte existant, pour quelque raison que ce soit, à sa seule discrétion.2. Vous devez être âgé(e) de : (i) 18 ans révolus, ou (ii) au moins avoir l'âge de la majorité dans la juridiction dans laquelle vous résidez et à partir de laquelle vous utilisez les Services pour ouvrir un compte.
+                    Vous confirmez que vous recevez tout Service fourni par cozaStore uniquement dans le but d'exercer une activité professionnelle et non dans un but personnel, familial ou pour votre ménage.4. Vous reconnaissez que cozaStore utilisera l'adresse e-mail que vous avez fournie lors de l'ouverture d'un compte ou telle que mise à jour de temps à autre par vous-même comme moyen principal de communication avec vous. 5 Vous êtes responsable de la sécurité de votre mot de passe. cozaStore ne peut et ne sera pas responsable de toute perte ou dommage résultant de votre incapacité à maintenir la sécurité de votre compte et de votre mot de passe.
+                    <h1>2. Activation du compte</h1>
+                    2.1 Propriétaire de la boutique
+
+                    Sous réserve de l’article 2.1(2), la personne qui s’inscrit au Service en ouvrant un Compte constitue la partie contractante (le « Propriétaire de la boutique ») aux fins des présentes Conditions d’utilisation et sera la personne qui est autorisée à utiliser tout Compte correspondant que nous pourrions fournir au Propriétaire de la boutique en relation avec le Service.
+                    Si vous vous inscrivez aux Service au nom de votre employeur, c'est ce dernier qui sera le Propriétaire de la boutique. Si vous vous abonnez aux Services pour le compte de votre employeur, vous devez alors utiliser votre adresse e-mail fournie par votre employeur. Vous déclarez et garantissez que vous avez le pouvoir de lier votre employeur à nos Conditions d'utilisation.
+                    Votre boutique cozaStore ne peut être associée qu'à un seul Propriétaire de boutique. Un Propriétaire de boutique peut avoir plusieurs boutiques cozaSrore. « Boutique » désigne la boutique en ligne ou le ou les points de vente physique associés au Compte.
+                   
+                
+                
+                </div>
+                j'accepte les termes de contrat<input type="checkbox" (change)="changestatut()">
+                <button class="btn btn-success loginbtn" [disabled]="etat" style="float:right;" routerLink="/register">suivant</button>
+
+                <button class="btn btn-default" style="float:right;background-color: #dcdde1;margin-right: 10px;" (click)="register()">Annuler</button>
+                
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+    
+</div>
+<app-footer></app-footer>
+

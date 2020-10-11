@@ -1,0 +1,28 @@
+
+ <button routerLink="/fournisseur/nouveauproduit" class="btn" style="background-color: #27293d;color:white;">
+    ajouter un produit
+  </button><br>
+<mat-form-field>
+    <input matInput (keyup)="chercher(requete.value)" type="text" placeholder="recherche" #requete>
+  </mat-form-field>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">titre</th>
+        <th scope="col">description</th>
+        <th scope="col">prix</th>
+        <th scope="col">image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of fournisseurs[0].produits">
+        <th scope="row">{{p.reference}}</th>
+        <td>{{p.libelle}}</td>
+        <td>{{p.description}}</td>
+        <td>{{p.prix}}DH</td>
+        <td><img src="http://localhost:4200/assets/img2/{{p.pr_image_nom}}" alt="image" style="width:50px;height: 50px;"></td>
+      </tr>
+     
+    </tbody>
+  </table>

@@ -1,0 +1,71 @@
+
+/*@import "../../../../assets/demo/demo.css";*/
+td,th,h4{
+    color:white;
+}
+
+th{
+  font-size: 15px;
+}
+
+.hide{
+  display: none;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+table {
+  width: 100%;
+  background-color: #27293d;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 85%;
+}
+
+::ng-deep input.mat-input-element {
+  color: white;
+}
+
+::ng-deep .mat-form-field .mat-form-field-label {
+  color: white !important;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: white !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+  background-color: white !important;
+}
+
+.info{
+  color:white;
+  font-size: 20px;
+  margin-bottom:10px;
+}
+
+
+.section1{
+    
+    margin:6px;
+    background-color: #27293d;
+}
+
+.categorie{
+  background-color: grey;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+
+

@@ -1,0 +1,39 @@
+
+
+
+<mat-toolbar color="primary">  
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toglesidebar()">
+            <mat-icon style="color:white;">menu</mat-icon>
+        </button>
+
+       
+        <span style="color:white;font-size:15px;">COZASTORE</span> 
+        <div class="menu">
+            <ul>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon style="color:white;font-size:20px;">settings</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon style="color:white;font-size:20px;">help_outline</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon style="color:white;font-size:20px;">person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="logout()">
+                        <mat-icon style="color:white;">exit_to_app</mat-icon>
+                        se deconnecter
+                    </button>
+                    
+                    </mat-menu>
+                </li>
+             </ul>
+         </div>
+    </mat-toolbar-row>  
+</mat-toolbar>

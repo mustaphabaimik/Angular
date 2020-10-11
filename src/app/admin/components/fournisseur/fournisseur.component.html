@@ -1,0 +1,89 @@
+<mat-form-field>
+    <input matInput (keyup)="chercher(requete.value)" type="text" placeholder="recherche" #requete>
+  </mat-form-field>
+
+<table class="table table-dark" style="width: 95%;" *ngIf="tag">
+  
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>prenom</th>
+      <th>pays</th>
+      <th>email</th>
+      <th>etat compte</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of fournisseurs">
+        <td>{{ item.nom }}</td>
+        <td>{{ item.prenom }}</td>
+        <td>{{ item.pays }}</td>
+        <td>{{ item.email }}</td>       
+        <td>{{ item.etat_compte }}</td>       
+        <td><button class="btn btn-primary" (click)="editer(item)">details</button></td>
+    </tr>
+  </tbody>
+  
+</table>
+
+
+<div class="row" *ngIf="!tag">
+
+       <div class="col-md-6 detailfournisseur">
+        <h3 style="color:gray">Fournisseur</h3>
+            <div class="row section1">
+                
+                <div class="col-md-6 info">Nom:</div>
+                <div class="col-md-6 info">{{fournisseur.nom}}</div>
+                <div class="col-md-6 info">prenom:</div>
+                <div class="col-md-6 info">{{fournisseur.prenom}}</div>
+                <div class="col-md-6 info">pays:</div>
+                <div class="col-md-6 info">{{fournisseur.pays}}</div>
+                <div class="col-md-6 info">adresse:</div>
+                <div class="col-md-6 info">{{fournisseur.adresse}}</div>
+                <div class="col-md-6 info">code postal:</div>
+                <div class="col-md-6 info">{{fournisseur.codepostal}}</div>
+                <div class="col-md-6 info">telephone:</div>
+                <div class="col-md-6 info">{{fournisseur.telephone}}</div>
+                <div class="col-md-6 info">email:</div>
+                <div class="col-md-6 info">{{fournisseur.email}}</div>
+                <div class="col-md-6 info">nom utilisateur:</div>
+                <div class="col-md-6 info">{{fournisseur.username}}</div>
+                <div class="col-md-6 info">etat compte:</div>
+                <div class="col-md-6 info">{{fournisseur.etat_compte}}</div>
+                <br>
+                <br>
+                <div class="col-md-6 info">catégories choisies:</div>
+                <div class="col-md-6 info">
+                    <ul>
+                        <li *ngFor="let cat of fournisseur.boutique.categories" class="categorie">{{cat.catnom}}</li>
+                       
+                    </ul>
+                </div> 
+            </div>
+       </div>
+       <div class="col-md-6 detailfournisseur">
+        <h3 style="color:gray">Boutique</h3>
+            <div class="row section1">
+                <div class="card mb-3">
+                    <img src="../../../../assets/img2/{{fournisseur.boutique.boutique_nom}}/{{fournisseur.boutique.image_nom}}" style="height: 400px;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{fournisseur.boutique.boutique_nom}}</h5>
+                      <p class="card-text">{{fournisseur.boutique.boutique_description}}</p>
+                    </div>
+                  </div>     
+            </div>
+       </div>
+      
+</div>
+<div class="row" *ngIf="!tag">
+    <div class="col-md-12">
+       <button (click)="valider(fournisseur.user_id)" *ngIf="etatcomptemodifiable" class="btn btn-warning" style="width: 100%;">valider le compte</button>
+    </div>
+    <div class="col-md-12">
+      <button (click)="retour()" class="btn btn-primary" style="width: 100%;">Retour</button>     
+   </div>
+    
+</div>
+

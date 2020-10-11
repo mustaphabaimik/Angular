@@ -1,0 +1,10 @@
+<app-headerfrn></app-headerfrn>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="true">
+        <app-sidebarfrn></app-sidebarfrn>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

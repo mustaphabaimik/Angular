@@ -1,0 +1,94 @@
+
+<div class="container-fluid" style="margin-top: 10px;background-color: #f5f6fa">
+   
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+        <div class="col-md-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="text-center custom-login">
+                <h3>Nouveau Compte</h3>
+               
+            </div>
+            <div class="hpanel" style="background-color: white;padding: 10px;">
+                <div class="panel-body">
+                    <form action="#" id="loginForm" (ngSubmit)="addClient()" #f="ngForm">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Nom</label>
+                                <input class="form-control" name="frnom" [(ngModel)]="client.nom" #frnom="ngModel" required>
+                                <div style="color: red;" *ngIf="frnom.touched && !frnom.valid" class="alert alert-danger">
+                                    <div *ngIf="frnom.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Prenom</label>
+                                <input class="form-control" name="frprenom" [(ngModel)]="client.prenom" #frprenom="ngModel" required>
+                                <div style="color: red;" *ngIf="frprenom.touched && !frprenom.valid" class="alert alert-danger">
+                                    <div *ngIf="frprenom.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Pays</label>
+                                <select class="form-control" name="frpays" [(ngModel)]="client.pays" #frpays="ngModel" required>
+                                    <option value="{{p.name}}" *ngFor='let p of pays'>{{ p.name }}</option>             
+                                </select>
+                                <div style="color: red;" *ngIf="frpays.touched && !frpays.valid" class="alert alert-danger">
+                                    <div *ngIf="frpays.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Adresse</label>
+                                <input class="form-control" name="fradresse" [(ngModel)]="client.adresse" #fradresse="ngModel" required>
+                                <div style="color: red;" *ngIf="fradresse.touched && !fradresse.valid" class="alert alert-danger">
+                                    <div *ngIf="fradresse.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>codepostal</label>
+                                <input class="form-control" name="frcodepostal" [(ngModel)]="client.codepostal" #frcodepostal="ngModel" required>
+                                <div style="color: red;" *ngIf="frcodepostal.touched && !frcodepostal.valid" class="alert alert-danger">
+                                    <div *ngIf="frcodepostal.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Telephone</label>
+                                <input class="form-control" name="frtel" [(ngModel)]="client.telephone" #frtel="ngModel" required>
+                                <div style="color: red;" *ngIf="frtel.touched && !frtel.valid" class="alert alert-danger">
+                                    <div *ngIf="frtel.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Email</label>
+                                <input class="form-control" name="fremail" [(ngModel)]="client.email" #fremail="ngModel" required>
+                                <div style="color: red;" *ngIf="fremail.touched && !fremail.valid" class="alert alert-danger">
+                                    <div *ngIf="fremail.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>nom d'utilisateur</label>
+                                <input class="form-control" name="frlogin" [(ngModel)]="client.username" #frlogin="ngModel" required>
+                                <div style="color: red;" *ngIf="frlogin.touched && !frlogin.valid" class="alert alert-danger">
+                                    <div *ngIf="frlogin.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>Mot de passe</label>
+                                <input type="password" class="form-control" name="frpassword" [(ngModel)]="client.password" #frpassword="ngModel" required>
+                                <div style="color: red;" *ngIf="frpassword.touched && !frpassword.valid" class="alert alert-danger">
+                                    <div *ngIf="frpassword.errors.required">ce champ est obligatoire !!</div>
+                                </div>
+                            </div>
+                             
+                        </div>
+                        <div class="text-center">                            
+                            <button class="btn btn-success loginbtn" [disabled]="!f.valid">Enregistrer</button>
+                            <button class="btn btn-default" routerLink="/clientlogin">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+    
+</div>
+<app-footer></app-footer>

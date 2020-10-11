@@ -1,0 +1,13 @@
+ul li{
+    list-style: none;
+    display: inline-block; 
+    margin-left: 20px;
+}
+
+.menu{
+    position: absolute;
+    right:0;
+}
+mat-toolbar{
+    background-color:#27293d;
+}

@@ -1,0 +1,135 @@
+<p>
+  <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="background-color: #27293d;color:white;">
+    ajouter une categorie
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="background-color: #1e1e2e;">
+    <form action="" method="POST" (ngSubmit)="addcategorie()" #f="ngForm" *ngIf="test">
+  
+      <div class="row">
+        <div class="col-md-10">
+          <input type="text" class="form-control" name="catnom" [(ngModel)]="cat.catnom" #catnom="ngModel" required >
+          <div style="color: red;" *ngIf="catnom.touched && !catnom.valid ">
+            <div *ngIf="catnom.errors.required">ce champ est obligatoire !!</div>
+          </div>
+        </div>
+        <div class="col-md-2">
+        <input type="submit" value="ajouter" class="btn btn-primary" [disabled]="!f.valid">        
+        </div>
+       
+      </div>
+    </form>
+    <!--update form categorie-->
+    <form action="" method="POST" (ngSubmit)="updatecategorie()" #f="ngForm" *ngIf="!test"> 
+      <div class="row">
+        <div class="col-md-9">
+          <input type="text" class="form-control" name="catnom" [(ngModel)]="cat.catnom" #catnom="ngModel" required >
+          <div style="color: red;" *ngIf="catnom.touched && !catnom.valid ">
+            <div *ngIf="catnom.errors.required">ce champ est obligatoire !!</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+        <input type="submit" value="modifier" class="btn btn-warning" [disabled]="!f.valid">        
+        <button (click)="annuler()" class="btn btn-warning" style="margin-left: 5px;">annuler</button>
+      </div>
+       
+      </div>
+    </form>
+  <br>
+  
+  <form action="" method="POST" (ngSubmit)="addsouscategorie()" #fe="ngForm" *ngIf="flg">
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" class="form-control" name="souscatnom" [(ngModel)]="souscat.catnom" #souscatnom="ngModel" required>
+        <div style="color: red;" *ngIf="souscatnom.touched && !souscatnom.valid ">
+          <div *ngIf="souscatnom.errors.required">ce champ est obligatoire !!</div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <select  required class="form-control" name="parentcat" [(ngModel)]="catpar" #parentcat="ngModel">
+          <option value="" disabled>select veuillez choisr la fonction</option>
+          <option *ngFor="let c of categories" value="{{c.catid}}">{{ c.catnom }}</option>          
+        </select>
+        <div style="color: red;" *ngIf="parentcat.touched && !parentcat.valid ">
+          <div *ngIf="parentcat.errors.required">ce champ est obligatoire !!</div>
+        </div> 
+      </div>
+      <!--<div class="col-md-5" *ngIf="!flg"> 
+        <input type="text" value="{{souscat.parentcategorie.catnom}}">
+        <select  required class="form-control" name="parentcat" [(ngModel)]="catpar" #parentcat="ngModel">
+          <option value="" disabled selected>veuillez choisr la fonction</option>
+          <option *ngFor="let c of categories" value="{{c.catid}}">{{ c.catnom }}</option>          
+        </select>
+        <div style="color: red;" *ngIf="parentcat.touched && !parentcat.valid ">
+          <div *ngIf="parentcat.errors.required">ce champ est obligatoire !!</div>
+        </div> 
+      </div>-->
+      <div class="col-md-2">
+        <input type="submit" value="ajouter" class="btn btn-primary" [disabled]="!fe.valid">
+      </div>
+       
+        
+  </div>
+  </form>
+
+  <form action="" method="POST" (ngSubmit)="updatesouscategorie()" #fe="ngForm" *ngIf="!flg">
+    <div class="row">
+      <div class="col-md-4">
+        <input type="text" class="form-control" name="souscatnom" [(ngModel)]="souscat.catnom" #souscatnom="ngModel" required>
+        <div style="color: red;" *ngIf="souscatnom.touched && !souscatnom.valid ">
+          <div *ngIf="souscatnom.errors.required">ce champ est obligatoire !!</div>
+        </div>
+      </div>
+      <!--<div class="col-md-3"> 
+        <input type="text" class="form-control" disabled value="{{souscat.parentcategorie.catnom}}">  
+      </div>-->
+      <div class="col-md-4">
+        <select  required class="form-control" name="parentcat" [(ngModel)]="catpar" #parentcat="ngModel">
+          <option value="" disabled>select veuillez choisr la fonction</option>
+          <option *ngFor="let c of categories" value="{{c.catid}}">{{ c.catnom }}</option>          
+        </select>
+        <div style="color: red;" *ngIf="parentcat.touched && !parentcat.valid ">
+          <div *ngIf="parentcat.errors.required">ce champ est obligatoire !!</div>
+        </div> 
+      </div>
+     
+      <div class="col-md-4">
+        <input type="submit" value="modifier" class="btn btn-warning" [disabled]="!fe.valid">
+        <button (click)="annuleruodate()" class="btn btn-warning" style="margin-left: 5px;">annuler</button>
+      </div>
+       
+        
+  </div>
+  </form>
+
+  
+  </div>
+</div>
+  <mat-form-field>
+    <input matInput (keyup)="chercher(requete.value)" type="text" placeholder="recherche" #requete>
+  </mat-form-field>
+<table class="table table-dark" style="width: 95%;">
+  
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th> Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cat of filterlistcat | paginate : {itemsPerPage:2,currentPage:p}">
+      <td>{{cat.catid}}</td>
+      <td>{{cat.catnom}}</td> 
+      <td>
+        <button (click)="editcat(cat)"><mat-icon>launched_outline</mat-icon></button>
+       <button (click)="delete(cat)"><mat-icon style="color:red;">delete_outline</mat-icon></button>      
+      </td>    
+    </tr>
+  </tbody> 
+</table>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+
+
