@@ -10,7 +10,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule,MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatListModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { AreaComponent } from './charts/area/area.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import { MatTableModule } from '@angular/material/table'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,8 +34,6 @@ import { CommandeService } from './services/commande.service';
     FooterComponent,
     
     SidebarComponent,
-    
-    AreaComponent,
     
     CategorieComponent,
     
